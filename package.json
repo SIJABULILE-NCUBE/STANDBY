@@ -1,0 +1,14 @@
+{
+  "name": "standby",
+  "version": "1.0.0",
+  "description": "Standby - a seat hold, confirm and waitlist API with a small plain HTML/JS frontend.",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "test": "node --test test/*.test.js"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}
