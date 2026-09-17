@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Standby - Manage Hold</title>
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+  <header class="top-nav">
+    <span class="brand">Standby</span>
+    <nav>
+      <a href="/index.html">Seat Map</a>
+      <a href="/manage.html" class="active">Manage Hold</a>
+      <a href="/log.html">Event Log</a>
+    </nav>
+  </header>
+
+  <main>
+    <h1>Manage a hold</h1>
+    <p class="subtitle">
+      Enter the email you used and your hold code to extend, confirm or release a seat.
+    </p>
+
+    <div class="card">
+      <div class="form-row">
+        <div class="field">
+          <label for="email-input">Email</label>
+          <input type="email" id="email-input" placeholder="you@example.com" />
+        </div>
+        <div class="field">
+          <label for="code-input">Hold code</label>
+          <input type="text" id="code-input" placeholder="e.g. 7HXKM9" maxlength="6" />
+        </div>
+      </div>
+
+      <div class="form-row">
+        <button id="extend-button">Extend</button>
+        <button id="confirm-button">Confirm</button>
+        <button id="release-button" class="secondary">Release</button>
+      </div>
+
+      <div id="action-message"></div>
+    </div>
+  </main>
+
+  <script src="/js/manage.js"></script>
+</body>
+</html>

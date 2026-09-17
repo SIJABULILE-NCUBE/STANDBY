@@ -1,0 +1,284 @@
+/* One stylesheet shared by all three screens. I kept it in its own file
+   instead of inline <style> tags so it's easy to find and tweak in one
+   place, and so the HTML files stay focused on structure/content. */
+
+/* -------- theme variables -------- */
+/* Putting the theme colours here as CSS variables means if I ever want to
+   change "gold" to a slightly different shade, I only change it once and
+   it updates everywhere it's used below. */
+:root {
+  --color-gold: #c9a227;
+  --color-gold-dark: #a5811d;
+  --color-ivory: #fffff0;
+  --color-white: #ffffff;
+  --color-text: #2b2b24;
+  --color-text-muted: #6b6b5c;
+  --color-border: #e6dfc2;
+
+  /* status colours for the seat map - kept separate from the main theme
+     so they still read clearly against the ivory background */
+  --color-available: #3f7d3f;
+  --color-held: #c9a227;
+  --color-confirmed: #8a1f1f;
+
+  --shadow-soft: 0 2px 10px rgba(43, 43, 36, 0.08);
+  --radius: 10px;
+}
+
+/* -------- reset-ish basics -------- */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Helvetica, Arial, sans-serif;
+  background-color: var(--color-ivory);
+  color: var(--color-text);
+  line-height: 1.5;
+}
+
+a {
+  color: var(--color-gold-dark);
+}
+
+/* -------- top navigation, shared across the three pages -------- */
+.top-nav {
+  background-color: var(--color-white);
+  border-bottom: 2px solid var(--color-gold);
+  padding: 1rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.top-nav .brand {
+  font-weight: 700;
+  font-size: 1.15rem;
+  color: var(--color-gold-dark);
+  letter-spacing: 0.02em;
+}
+
+.top-nav nav a {
+  margin-left: 1rem;
+  text-decoration: none;
+  color: var(--color-text);
+  font-weight: 600;
+  padding-bottom: 2px;
+  border-bottom: 2px solid transparent;
+}
+
+.top-nav nav a:hover,
+.top-nav nav a.active {
+  border-bottom-color: var(--color-gold);
+}
+
+main {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 1.5rem;
+}
+
+h1 {
+  font-size: 1.5rem;
+  margin-bottom: 0.25rem;
+}
+
+.subtitle {
+  color: var(--color-text-muted);
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+}
+
+/* -------- generic card, used to wrap forms and panels -------- */
+.card {
+  background-color: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-soft);
+  padding: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+/* -------- forms -------- */
+.form-row {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  margin-bottom: 0.75rem;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+}
+
+input[type='text'],
+input[type='email'] {
+  padding: 0.55rem 0.7rem;
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  font-size: 0.95rem;
+  min-width: 220px;
+  background-color: var(--color-ivory);
+}
+
+input:focus {
+  outline: 2px solid var(--color-gold);
+  outline-offset: 1px;
+}
+
+button {
+  background-color: var(--color-gold);
+  color: var(--color-white);
+  border: none;
+  padding: 0.6rem 1.1rem;
+  border-radius: 6px;
+  font-weight: 700;
+  cursor: pointer;
+  font-size: 0.95rem;
+  transition: background-color 0.15s ease-in-out;
+}
+
+button:hover {
+  background-color: var(--color-gold-dark);
+}
+
+button:disabled {
+  background-color: var(--color-border);
+  color: var(--color-text-muted);
+  cursor: not-allowed;
+}
+
+button.secondary {
+  background-color: var(--color-white);
+  color: var(--color-gold-dark);
+  border: 1px solid var(--color-gold);
+}
+
+button.secondary:hover {
+  background-color: var(--color-ivory);
+}
+
+/* -------- outcome / message boxes -------- */
+.message {
+  padding: 0.75rem 1rem;
+  border-radius: 6px;
+  margin-top: 0.75rem;
+  font-size: 0.9rem;
+}
+
+.message.success {
+  background-color: #eaf4ea;
+  border: 1px solid var(--color-available);
+  color: #1f4d1f;
+}
+
+.message.error {
+  background-color: #fbeaea;
+  border: 1px solid var(--color-confirmed);
+  color: var(--color-confirmed);
+}
+
+/* -------- seat map -------- */
+.seat-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(64px, 1fr));
+  gap: 0.6rem;
+}
+
+.seat {
+  aspect-ratio: 1 / 1;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.9rem;
+  cursor: pointer;
+  border: 2px solid transparent;
+  color: var(--color-white);
+  user-select: none;
+}
+
+.seat.available {
+  background-color: var(--color-available);
+}
+
+.seat.held {
+  background-color: var(--color-held);
+  color: var(--color-text);
+}
+
+.seat.confirmed {
+  background-color: var(--color-confirmed);
+  cursor: not-allowed;
+}
+
+.seat.selected {
+  border-color: var(--color-text);
+}
+
+.legend {
+  display: flex;
+  gap: 1.25rem;
+  margin-top: 1rem;
+  flex-wrap: wrap;
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+}
+
+.legend-swatch {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 3px;
+  margin-right: 0.4rem;
+  vertical-align: middle;
+}
+
+/* -------- event log table -------- */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+th, td {
+  text-align: left;
+  padding: 0.55rem 0.6rem;
+  border-bottom: 1px solid var(--color-border);
+}
+
+th {
+  color: var(--color-text-muted);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+tr:hover td {
+  background-color: var(--color-ivory);
+}
+
+.hold-code {
+  font-family: 'Courier New', monospace;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+
+.empty-state {
+  color: var(--color-text-muted);
+  font-style: italic;
+  padding: 1rem 0;
+}

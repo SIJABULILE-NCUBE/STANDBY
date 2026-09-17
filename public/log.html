@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Standby - Event Log</title>
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+  <header class="top-nav">
+    <span class="brand">Standby</span>
+    <nav>
+      <a href="/index.html">Seat Map</a>
+      <a href="/manage.html">Manage Hold</a>
+      <a href="/log.html" class="active">Event Log</a>
+    </nav>
+  </header>
+
+  <main>
+    <h1>Event log</h1>
+    <p class="subtitle">
+      A read-only, chronological record of everything that has happened. Entries are never edited or removed.
+    </p>
+
+    <div class="card">
+      <div class="form-row">
+        <div class="field">
+          <label for="seat-filter">Filter by seat number</label>
+          <input type="text" id="seat-filter" placeholder="e.g. 5" />
+        </div>
+        <button id="filter-button" class="secondary">Filter</button>
+        <button id="clear-filter-button" class="secondary">Clear filter</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <table>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Time</th>
+            <th>Event</th>
+            <th>Seat</th>
+            <th>Email</th>
+            <th>Hold code</th>
+          </tr>
+        </thead>
+        <tbody id="log-table-body"></tbody>
+      </table>
+      <div id="empty-state" class="empty-state" style="display: none">
+        No log entries to show yet.
+      </div>
+    </div>
+  </main>
+
+  <script src="/js/log.js"></script>
+</body>
+</html>

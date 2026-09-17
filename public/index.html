@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Standby - Seat Map</title>
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+  <header class="top-nav">
+    <span class="brand">Standby</span>
+    <nav>
+      <a href="/index.html" class="active">Seat Map</a>
+      <a href="/manage.html">Manage Hold</a>
+      <a href="/log.html">Event Log</a>
+    </nav>
+  </header>
+
+  <main>
+    <h1>Pick a seat</h1>
+    <p class="subtitle">
+      Enter your email, then click an available seat to place a hold on it.
+    </p>
+
+    <div class="card">
+      <div class="form-row">
+        <div class="field">
+          <label for="email-input">Your email</label>
+          <input type="email" id="email-input" placeholder="you@example.com" />
+        </div>
+        <button id="hold-button" disabled>Hold selected seat</button>
+        <button id="waitlist-button" class="secondary" style="display: none">
+          Join the waitlist
+        </button>
+      </div>
+      <div id="action-message"></div>
+    </div>
+
+    <div class="card">
+      <div id="seat-grid" class="seat-grid"></div>
+
+      <div class="legend">
+        <span><span class="legend-swatch" style="background-color: var(--color-available)"></span>Available</span>
+        <span><span class="legend-swatch" style="background-color: var(--color-held)"></span>Held</span>
+        <span><span class="legend-swatch" style="background-color: var(--color-confirmed)"></span>Confirmed</span>
+      </div>
+    </div>
+  </main>
+
+  <script src="/js/seatmap.js"></script>
+</body>
+</html>
