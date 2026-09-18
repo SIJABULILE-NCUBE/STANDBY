@@ -5,6 +5,9 @@ can place a temporary hold on a seat and confirm it before the hold expires,
 and if the event is sold out they can join a waitlist and be given a seat
 automatically when one frees up.
 
+- **GitHub repo:** https://github.com/SIJABULILE-NCUBE/STANDBY
+- **Loom walkthrough:** [add Loom link here]
+
 ## Project structure
 
 ```
