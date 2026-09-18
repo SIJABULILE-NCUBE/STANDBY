@@ -6,7 +6,7 @@ and if the event is sold out they can join a waitlist and be given a seat
 automatically when one frees up.
 
 - **GitHub repo:** https://github.com/SIJABULILE-NCUBE/STANDBY
-- **Loom walkthrough:** [
+- **Loom walkthrough:** [https://www.loom.com/share/52f1c5e6ba6b4b368895a92e7a4df5c4]
 
 ## Project structure
 
